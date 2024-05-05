@@ -55,7 +55,7 @@
       <div class="content">
         <div class="panel-header bg-primary-gradient">
           <div class="page-inner text-center py-5">
-            <h2 class="text-white pb-2 fw-bold h1">Form Tanda Terima Peraturan Perusahaan</h2>
+            <h2 class="text-white pb-2 fw-bold h1">Tanda Terima Peraturan Perusahaan</h2>
           </div>
         </div>
 
