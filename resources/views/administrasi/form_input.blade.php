@@ -224,7 +224,7 @@
 
         // Kosongkan Option Select Jabatan
         jabatanSelect.empty();
-        jabatanSelect.append("<option value="">Pilih Jabatan</option>");
+        jabatanSelect.append(`<option value="">Pilih Jabatan</option>`);
 
         // Inisiasi jabatan sesuai departemen
         if (departemen === 'PRODUKSI') {
@@ -247,6 +247,8 @@
 
         } else if (departemen === 'FA & LOGISTIK') {
             var jabatans = ['FUEL ADMIN', 'FUEL GL', 'OPERATOR FUEL TRUCK', 'FALOG DEPT HEAD', 'FUEL MAN', 'LOGISTIC GL', 'LOGISTIC ADMIN', 'LOGISTIC GL (ACT)', 'FUEL GL (ACT)', 'FINANCE & ACCOUNTING SECTION HEAD (ACT)', 'PURCHASING ADMIN', 'LOGISTIC SECTION HEAD (ACT)', 'PURCHASING GL', 'FINANCE & ACCOUNTING GL', 'PURCHASING GL (ACT)', 'PLDP FALOG', 'FINANCE & ACCOUNTING GL (ACT)'];
+        } else {
+            var jabatans = [];
         }
 
         // Loop jabatan dan append ke select jabatan

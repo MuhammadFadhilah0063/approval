@@ -667,10 +667,11 @@
                       $("#modalEdit .btn-update").attr("data-id", id);
                       $("#modalEdit input[name='nrp']").val(response.data.nrp);
                       $("#modalEdit input[name='nama']").val(response.data.nama);
-                      $("#modalEdit input[name='departemen']").val(response.data.departemen);
+                      $("#modalEdit select[name='departemen']").val(response.data.departemen);
                       $("#modalEdit select[name='perusahaan']").val(response.data.perusahaan);
                       
-                      $("#modalEdit input[name='jabatan']").val(response.data.jabatan);
+                      setSelectJabatan(response.data.departemen);
+                      $("#modalEdit select[name='jabatan']").val(response.data.jabatan);
 
                       if(!response.data.ttd) {
                         $("#modalEdit .ttd").removeClass("d-none");
@@ -696,8 +697,8 @@
         formData.append("_method", "PUT");
         formData.append("nrp", $("#modalEdit input[name='nrp']").val());
         formData.append("nama", $("#modalEdit input[name='nama']").val());
-        formData.append("departemen", $("#modalEdit input[name='departemen']").val());
-        formData.append("jabatan", $("#modalEdit input[name='jabatan']").val());
+        formData.append("departemen", $("#modalEdit select[name='departemen']").val());
+        formData.append("jabatan", $("#modalEdit select[name='jabatan']").val());
         formData.append("perusahaan", $("#modalEdit select[name='perusahaan']").val());
         formData.append("ttd", $("#modalEdit textarea[name='ttd']").val());
 
@@ -820,8 +821,8 @@
 
         $(`#modalEdit input[name="nama"]`).val("");
         $(`#modalEdit input[name="nrp"]`).val("");
-        $(`#modalEdit input[name="jabatan"]`).val("");
-        $(`#modalEdit input[name="departemen"]`).val("");
+        $(`#modalEdit select[name="departemen"]`).val("").trigger();
+        $(`#modalEdit select[name="jabatan"]`).val("").trigger();
         $(`#modalEdit textarea[name="ttd"]`).val("");
 
         $("#modalEdit .ttd").removeClass("d-block");
@@ -854,16 +855,15 @@
               dataTable.column($(this).data('column')).search(regex, true, false).draw();
           }
       });
-
-      // Select Jabatan
-      $("#departemen").on("change", function() {
-
-        var departemen = $(this).val();
+      
+      // Fungsi append option pada select jabatan
+      function setSelectJabatan(departemen) {
+        
         var jabatanSelect = $("#jabatan");
 
         // Kosongkan Option Select Jabatan
         jabatanSelect.empty();
-        jabatanSelect.append("<option value="">Pilih Jabatan</option>");
+        jabatanSelect.append(`<option value="">Pilih Jabatan</option>`);
 
         // Inisiasi jabatan sesuai departemen
         if (departemen === 'PRODUKSI') {
@@ -886,12 +886,21 @@
 
         } else if (departemen === 'FA & LOGISTIK') {
             var jabatans = ['FUEL ADMIN', 'FUEL GL', 'OPERATOR FUEL TRUCK', 'FALOG DEPT HEAD', 'FUEL MAN', 'LOGISTIC GL', 'LOGISTIC ADMIN', 'LOGISTIC GL (ACT)', 'FUEL GL (ACT)', 'FINANCE & ACCOUNTING SECTION HEAD (ACT)', 'PURCHASING ADMIN', 'LOGISTIC SECTION HEAD (ACT)', 'PURCHASING GL', 'FINANCE & ACCOUNTING GL', 'PURCHASING GL (ACT)', 'PLDP FALOG', 'FINANCE & ACCOUNTING GL (ACT)'];
+        }else {
+            var jabatans = [];
         }
 
         // Loop jabatan dan append ke select jabatan
         jabatans.forEach(function(jabatan) {
           jabatanSelect.append(`<option value="${jabatan}">${jabatan}</option>`);
         });
+      }
+
+      // Select Departemen
+      $("#departemen").on("change", function() {
+
+        var departemen = $(this).val();
+        setSelectJabatan(departemen);
       });
     });
   </script>
