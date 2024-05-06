@@ -105,8 +105,9 @@
                       <div class="col">
                         <div class="form-group">
                           <label for="jabatan">Jabatan</label>
-                          <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Jabatan"
-                            required>
+                          <select name="jabatan" id="jabatan" class="form-control" required>
+                            <option value="">Pilih Jabatan</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -206,6 +207,46 @@
             $('.btn-simpan').attr('disabled', 'disabled');
         }
       });
+
+      // Select Jabatan
+      $("#departemen").on("change", function() {
+
+        var departemen = $(this).val();
+        var jabatanSelect = $("#jabatan");
+
+        // Kosongkan Option Select Jabatan
+        jabatanSelect.empty();
+        jabatanSelect.append("<option value="">Pilih Jabatan</option>");
+
+        // Inisiasi jabatan sesuai departemen
+        if (departemen === 'PRODUKSI') {
+            var jabatans = ['PRODUCTION SECTION HEAD', 'OPERATOR DT 30 - 50', 'PRODUCTION GL', 'OPERATOR HD 785', 'OPERATOR GD 825', 'PRODUCTION GL (ACT)', 'PRODUCTION SECTION HEAD (ACT)', 'PIT SERVICE GL', 'OPERATOR D155', 'OPERATOR HD 465', 'OPERATOR BW 211D', 'MANPOWER GL', 'OPERATOR PC 2000', 'OPERATOR PC 1250', 'HRM SECTION HEAD (ACT)', 'PRODUCTION DEPT HEAD', 'DRILL & BLAST GL', 'OPERATOR DT 20T', 'OPERATOR CAT 777', 'OPERATOR WATER TRUCK', 'OPERATOR DT 20', 'OPERATOR D85', 'OPERATOR GD 705', 'OPERATOR PC 500', 'OPERATOR PC 200', 'OPERATION INSTRUCTOR', 'DRILL & BLAST SECTION HEAD (ACT)', 'OPERATOR A2B'];
+
+        } else if (departemen === 'PLANT') {
+            var jabatans = ['MECHANIC WHEEL', 'PLANT WHEEL EQUIPMENT GL', 'PLANT FABRICATION GL', 'PLANT ADMIN', 'MECHANIC TRACK', 'OPERATOR MANITOU', 'OPERATOR LUBE TRUCK', 'TYRE MAN', 'PLANT TRACK EQUIPMENT SECTION HEAD', 'WELDER', 'PLANT SUPPORT EQUIPMENT GL', 'OPERATOR CT 50T', 'MECHANIC SUPPORT', 'PLANT DEPT HEAD', 'PLANT TRACK EQUIPMENT GL', 'PLANT FABRICATION GL (ACT)', 'PLANT HEAVY EQUIPMENT GL', 'PLANT ENGINEER GL', 'PLANT FABRICATION SECTION HEAD', 'PLANT PEOPLE DEVELOPMENT GL', 'PLANT TRACK EQUIPMENT GL (ACT)', 'PLANT SUPPORT EQUIPMENT SECTION HEAD (ACT)', 'PLANT WHEEL EQUIPMENT GL (ACT)', 'OPERATOR WATER TRUCK', 'OPERATOR LOWBOY', 'OPERATOR CT 10T', 'OPERATOR FORKLIFT', 'PLANT GL', 'PLANT PLANNER GL', 'PLANT TYRE GL', 'PLANT SUPPORT EQUIPMENT GL (ACT)', 'PLANT SUPPORT EQUIPMENT SECTION HEAD', 'PLANT TYRE SECTION HEAD', 'PLANT TRACK EQUIPMENT SECTION HEAD (ACT)', 'OPERATOR MERLO', 'PLANT ENGINEER GL (ACT)', 'PLANT TYRE GL (ACT)', 'PLANT WHEEL EQUIPMENT SECTION HEAD', 'PLANT ENGINEER SECTION HEAD', 'PLANT PEOPLE DEVELOPMENT SECTION HEAD', 'PLDP PLANT'];
+
+        } else if (departemen === 'HCGA') {
+            var jabatans = ['RECRUITMENT & DEVELOPMENT GL', 'GENERAL SERVICE GL', 'CHIEF SECURITY', 'SECURITY', 'GENERAL AFFAIRS SECTION HEAD', 'COMBEN ADMIN', 'TRANSPORTATION GL', 'GENERAL SERVICE GL (ACT)', 'GA ELECTRICIAN', 'CORPORATE SOCIAL RESPONSIBILITY GL', 'COMPENSATION & BENEFIT GL', 'INDUSTRIAL RELATION GL', 'HUMAN CAPITAL SECTION HEAD', 'PLDP HCGA', 'HCGA DEPT HEAD', 'RECRUITMENT & DEVELOPMENT GL (ACT)'];
+
+        } else if (departemen === 'SHE') {
+            var jabatans = ['K3P SECTION HEAD', 'K3P GL', 'SHE DEPT HEAD', 'SHE ADMIN', 'EMERGENCY RESPONSE CREW', 'SHE HELPER', 'KOP SECTION HEAD', 'KOP GL', 'EMERGENCY RESPONSE GL (ACT)', 'K3P SECTION HEAD (ACT)', 'PARAMEDIC', 'EMERGENCY RESPONSE GL', 'SHE GL', 'ENVIRONMENT GL', 'DOCTOR', 'PLDP SHE'];
+
+        } else if (departemen === 'COE') {
+            var jabatans = ['ICT GL', 'OPERATION DISPATCH GL', 'CENTER OF EXCELLENCE SECTION HEAD', 'DATA PROCESSOR', 'CENTER OF EXCELLENCE SECTION HEAD (ACT)', 'MANAGEMENT DEVELOPMENT GL', 'SYSTEM DEVELOPER', 'ICT GL (ACT)', 'DISPATCH ANALYST GL', 'ICT TECHNICIAN', 'DISPATCH ANALYST GL (ACT)', 'PLDP COE'];
+
+        } else if (departemen === 'ENGINEERING') {
+            var jabatans = ['MINE PLAN SECTION HEAD', 'MINE PLAN GL', 'SURVEY GL', 'PIT CONTROL GL', 'MINE PLAN SECTION HEAD (ACT)', 'ENGINEERING DEPT HEAD', 'SURVEY SECTION HEAD', 'SURVEY SECTION HEAD (ACT)', 'MINEPLAN DRAFTER', 'SURVEY DRAFTER', 'CIVIL ENGINEER GL', 'DRILL & BLAST ENGINEER GL', 'GEOTECHNOLOGY & DEVELOPMENT ENGINEER GL', 'PLDP ENGINEERING', 'SURVEY INSTRUMENT MAN'];
+
+        } else if (departemen === 'FA & LOGISTIK') {
+            var jabatans = ['FUEL ADMIN', 'FUEL GL', 'OPERATOR FUEL TRUCK', 'FALOG DEPT HEAD', 'FUEL MAN', 'LOGISTIC GL', 'LOGISTIC ADMIN', 'LOGISTIC GL (ACT)', 'FUEL GL (ACT)', 'FINANCE & ACCOUNTING SECTION HEAD (ACT)', 'PURCHASING ADMIN', 'LOGISTIC SECTION HEAD (ACT)', 'PURCHASING GL', 'FINANCE & ACCOUNTING GL', 'PURCHASING GL (ACT)', 'PLDP FALOG', 'FINANCE & ACCOUNTING GL (ACT)'];
+        }
+
+        // Loop jabatan dan append ke select jabatan
+        jabatans.forEach(function(jabatan) {
+          jabatanSelect.append(`<option value="${jabatan}">${jabatan}</option>`);
+        });
+      });
+
     });
   </script>
 </body>
