@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
-use DateTime;
 use Illuminate\Support\Facades\Date;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -160,9 +159,9 @@ class AdministrasiController extends Controller
 
         // Title
         if ($data->perusahaan == "PT. PPA") {
-            $title = "PT. ANTAREJA MAHADA MAKMUR (AMM)";
-        } else if ($data->perusahaan == "PT. AMM") {
             $title = "PT. PUTRA PERKASA ABADI (PPA)";
+        } else if ($data->perusahaan == "PT. AMM") {
+            $title = "PT. ANTAREJA MAHADA MAKMUR (AMM)";
         }
 
         // TTD
