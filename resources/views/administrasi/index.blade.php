@@ -318,7 +318,16 @@
             <div class="col">
               <div class="form-group">
                 <label class="pb-1 fw-bold">Departemen</label>
-                <input type="text" class="form-control" name="departemen">
+                <select name="departemen" id="departemen" class="form-control select3" required>
+                  <option value="">Pilih Departemen</option>
+                  <option value="PRODUKSI">PRODUKSI</option>
+                  <option value="PLANT">PLANT</option>
+                  <option value="ENGINEERING">ENGINEERING</option>
+                  <option value="COE">COE</option>
+                  <option value="FA & LOGISTIK">FA & LOGISTIK</option>
+                  <option value="SHE">SHE</option>
+                  <option value="HCGA">HCGA</option>
+                </select>
               </div>
             </div>
           </div>
